@@ -8,44 +8,44 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         boolean running = true;
 
-        System.out.println("=== Hastane Yönetim Sistemine Hoş Geldiniz ===");
+        System.out.println("Welcome to Hospital Management System ");
 
         while (running) {
-            System.out.println("\n1. Yeni Hasta Kaydı");
-            System.out.println("2. Tedavi İsteği Oluştur");
-            System.out.println("3. Tedavi İşle (Sıradaki Hasta)");
-            System.out.println("4. Tüm Hastaları Ciddiyete Göre Sırala");
-            System.out.println("5. Sistem Durumunu Görüntüle");
-            System.out.println("0. Çıkış");
-            System.out.print("Seçiminiz: ");
+            System.out.println("\n1. New patient register");
+            System.out.println("2. Create Treatment Request");
+            System.out.println("3. Treatment Process (Next Patient)");
+            System.out.println("4. Sort all patients by importance.");
+            System.out.println("5. Show the system ");
+            System.out.println("0. Exit");
+            System.out.print("Your choice: ");
 
             int choice = scanner.nextInt();
             scanner.nextLine();
 
             switch (choice) {
                 case 1:
-                    System.out.print("Hasta ID: ");
+                    System.out.print("Patient ID: ");
                     int id = scanner.nextInt();
                     scanner.nextLine();
-                    System.out.print("İsim Soyisim: ");
+                    System.out.print("Name and Surname : ");
                     String name = scanner.nextLine();
-                    System.out.print("Ciddiyet (1-10): ");
+                    System.out.print("Importance (1-10): ");
                     int severity = scanner.nextInt();
-                    System.out.print("Yaş: ");
+                    System.out.print("Age: ");
                     int age = scanner.nextInt();
 
                     hospital.addPatient(new Patient(id, name, severity, age));
-                    System.out.println("Hasta sisteme kaydedildi.");
+                    System.out.println("Patient has been registered");
                     break;
 
                 case 2:
-                    System.out.print("Hasta ID: ");
+                    System.out.print("Patient ID: ");
                     int pId = scanner.nextInt();
-                    System.out.print("Acil durum mu? (true/false): ");
+                    System.out.print("Emergency? (true/false): ");
                     boolean isPriority = scanner.nextBoolean();
 
                     hospital.addTreatmentRequest(pId, isPriority);
-                    System.out.println("Talep kuyruğa eklendi.");
+                    System.out.println("Request added to queue.");
                     break;
 
                 case 3:
@@ -62,12 +62,11 @@ public class Main {
 
                 case 0:
                     running = false;
-                    System.out.println("Sistemden çıkılıyor...");
+                    System.out.println("Exiting to system..");
                     break;
 
                 default:
-                    System.out.println("Geçersiz seçim!");
+                    System.out.println("Unvalid choice!");
             }
         }
-    }
-}
+    }}

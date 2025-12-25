@@ -6,11 +6,11 @@ import java.util.ArrayList;
 public class HospitalSystem {
     private PatientList patients = new PatientList();
     private TreatmentQueue normalQueue = new TreatmentQueue();
-    private TreatmentQueue priorityQueue = new TreatmentQueue(); // Acil vakalar için
+    private TreatmentQueue priorityQueue = new TreatmentQueue();
     private DischargeStack discharges = new DischargeStack();
     private HashMap<Integer, Patient> patientLookup = new HashMap<>();
 
-    // 1. Yeni Hasta Ekleme (Hızlı lookup için HashMap'e de ekliyoruz)
+
     public void addPatient(Patient p) {
         patients.addPatient(p);
         patientLookup.put(p.id, p);
@@ -22,14 +22,13 @@ public class HospitalSystem {
             priorityQueue.enqueue(req);
         } else {
             normalQueue.enqueue(req);
-        }
-    }
+        }}
 
 
 
 
 
-    // 3. Tedavi Sürecini İşletme (Önce Priority Kuyruğu)
+
     public void processTreatment() {
         TreatmentRequest req = null;
 
@@ -43,26 +42,24 @@ public class HospitalSystem {
 
         if (req != null) {
             discharges.push(new DischargeRecord(req.patientId));
-            patients.removePatient(req.patientId);     // Linked List’ten sil
-            patientLookup.remove(req.patientId);        // HashMap’ten sil
+            patients.removePatient(req.patientId);
+            patientLookup.remove(req.patientId);
         } else {
-            System.out.println("No patients in queue.");
-        }
-    }
-    // 4. Sıralama Algoritması (Bubble Sort - Severity'ye göre)
+            System.out.println("No patients in queue. ");
+        }}
+
     public void sortPatientsBySeverity() {
-        // Linked List'i kolay sıralamak için geçici bir listeye alalım
+
         ArrayList<Patient> list = new ArrayList<>(patientLookup.values());
         int n = list.size();
         for (int i = 0; i < n - 1; i++) {
             for (int j = 0; j < n - i - 1; j++) {
                 if (list.get(j).severity < list.get(j + 1).severity) {
-                    // Swap (Büyükten küçüğe - En ağır hasta başa)
+
                     Patient temp = list.get(j);
                     list.set(j, list.get(j + 1));
                     list.set(j + 1, temp);
-                }
-            }
+                }}
         }
         System.out.println("--- Patients Sorted by Severity (High to Low) ---");
         for (Patient p : list) System.out.println(p);
@@ -70,14 +67,10 @@ public class HospitalSystem {
 
     public void printStatus() {
         System.out.println("\n--- Current System State ---");
-        System.out.println("Pending Priority: " + priorityQueue.size());
-        System.out.println("Pending Normal: " + normalQueue.size());
+        System.out.println("Pending Priority: " +priorityQueue.size());
+        System.out.println("Pending Normal: " +normalQueue.size());
         discharges.printStack();
 
 
     }
-
-
-
-
 }

@@ -13,11 +13,11 @@ public class Patient {
         this.age = age;
     }
 
-    @Override
+
     public String toString() {
         return String.format("[ID: %d | Name: %s | Severity: %d | Age: %d]", id, name, severity, age);
     }
 }
 
-// PatientList.java (Singly Linked List)
+
 

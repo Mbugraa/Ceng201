@@ -4,7 +4,7 @@ public class PatientList {
 
     private Node head;
 
-    // INNER NODE CLASS (DOĞRU YER)
+
     private class Node {
         Patient patient;
         Node next;
@@ -15,7 +15,7 @@ public class PatientList {
         }
     }
 
-    // O(n)
+
     public void addPatient(Patient p) {
         Node newNode = new Node(p);
         if (head == null) {
@@ -29,7 +29,7 @@ public class PatientList {
         temp.next = newNode;
     }
 
-    // O(n)
+
     public void removePatient(int id) {
         if (head == null) return;
 
@@ -48,7 +48,7 @@ public class PatientList {
         }
     }
 
-    // O(n)
+
     public Patient findPatient(int id) {
         Node temp = head;
         while (temp != null) {
@@ -64,5 +64,4 @@ public class PatientList {
             System.out.println(temp.patient);
             temp = temp.next;
         }
-    }
-}
+    }}
