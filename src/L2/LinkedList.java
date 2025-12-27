@@ -3,7 +3,7 @@ package L2;
 public class LinkedList {
     Node head;
 
-    public LinkedList() { e
+    public LinkedList() {
         head = null;
     }
 
